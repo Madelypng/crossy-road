@@ -185,6 +185,7 @@ game.onUpdateInterval(3000, function () {
     car.setVelocity(20, 0) //where the car goes 
 })
 
+//When the car hits the puppy :( 
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite: Sprite, otherSprite: Sprite) {
     game.over(false)
     game.reset()
