@@ -13,7 +13,7 @@ let puppy = sprites.create(img`
     . . . f 1 1 1 1 1 b 1 1 f f . .
     . . . f 1 f f f 1 f f 1 f . . .
     . . . f f . . f f . . f f . . .
-`)
+`,SpriteKind.Player)
 scene.setBackgroundImage(img`
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f
@@ -179,9 +179,14 @@ game.onUpdateInterval(3000, function () {
         . . f f f f f a a f f f f f a .
         . . . f f f . . . . f f f f . .
         . . . . . . . . . . . . . . . .
-    `, 0, 0)
+    `, 0, 0, SpriteKind.Projectile)
 
     car.setPosition(0, 50) //where the car starts
     car.setVelocity(20, 0) //where the car goes 
+})
+
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite: Sprite, otherSprite: Sprite) {
+    game.over(false)
+    game.reset()
 })
 
